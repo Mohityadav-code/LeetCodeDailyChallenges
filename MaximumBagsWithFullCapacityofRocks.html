@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Question : You have n bags numbered from 0 to n - 1. You are given two 0-indexed integer arrays capacity and
+        rocks. The ith bag can hold a maximum of capacity[i] rocks and currently contains rocks[i] rocks. You are also
+        given an integer additionalRocks, the number of additional rocks you can place in any of the bags.
+
+        Return the maximum number of bags that could have full capacity after placing the additional rocks in some bags.
+    </h1>
+    <h2>Input: capacity = [2,3,4,5], rocks = [1,2,4,4], additionalRocks = 2
+    </h2>
+    <script>
+        var capacity = [2, 3, 4, 5];
+        var rocks = [1, 2, 4, 4];
+        var additionalRocks = 2;
+        var fullbag = 0;
+        for (var j = 0; j < additionalRocks; j++) {
+            for (var i = 0; i < j + 1; i++) {
+                var max = capacity[i];
+                var rocksInBag = rocks[i];
+                if (rocksInBag < max) {
+                    rocks[i] = rocks[i] + 1
+                    console.log("rocks array is", rocks);
+                }
+            }
+        }
+        for (var i = 0; i < capacity.length; i++) {
+            var max = capacity[i];
+            var rocksInBag = rocks[i];
+            if (rocksInBag == max) {
+                fullbag++
+            }
+        }
+
+
+
+        console.log(rocks);
+        console.log(fullbag);
+        console.log("I'm So happy after solving this");
+    </script>
+</body>
+
+</html>
