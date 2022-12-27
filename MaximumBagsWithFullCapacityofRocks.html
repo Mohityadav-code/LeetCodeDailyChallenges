@@ -18,11 +18,14 @@
     <h2>Input: capacity = [2,3,4,5], rocks = [1,2,4,4], additionalRocks = 2
     </h2>
     <script>
-        var capacity = [2, 3, 4, 5];
-        var rocks = [1, 2, 4, 4];
-        var additionalRocks = 2;
+        // var capacity = [2, 3, 4, 5];
+        // var rocks = [1, 2, 4, 4];
+        // var additionalRocks = 2;
+        var capacity = [54, 18, 91, 49, 51, 45, 58, 54, 47, 91, 90, 20, 85, 20, 90, 49, 10, 84, 59, 29, 40, 9, 100, 1, 64, 71, 30, 46, 91]
+        var rocks = [14, 13, 16, 44, 8, 20, 51, 15, 46, 76, 51, 20, 77, 13, 14, 35, 6, 34, 34, 13, 3, 8, 1, 1, 61, 5, 2, 15, 18]
+        var additionalRocks = 77
         var fullbag = 0;
-        for (var j = 0; j < additionalRocks; j++) {
+        for (var j = additionalRocks - 1; j < additionalRocks; j++) {
             for (var i = 0; i < j + 1; i++) {
                 var max = capacity[i];
                 var rocksInBag = rocks[i];
@@ -39,12 +42,65 @@
                 fullbag++
             }
         }
+        //adding one more method if we want maximum numbers of bag and number of additionals rocks are greater than space
 
+        var additionalRocks = 77
+        var capacity = [54, 18, 91, 49, 51, 45, 58, 54, 47, 91, 90, 20, 85, 20, 90, 49, 10, 84, 59, 29, 40, 9, 100, 1, 64, 71, 30, 46, 91]
+        var rocks = [14, 13, 16, 44, 8, 20, 51, 15, 46, 76, 51, 20, 77, 13, 14, 35, 6, 34, 34, 13, 3, 8, 1, 1, 61, 5, 2, 15, 18]
+        console.log(call(capacity, rocks, additionalRocks));
+        function call(capacity, rocks, additionalRocks) {
+            var fullcapacity = 0
+            var availablespace = []
+            var index = []
+            for (var i = 0; i < capacity.length; i++) {
+                var space = capacity[i] - rocks[i]
+                var fullcapacity = space + fullcapacity
+                availablespace.push(space)
+                index.push(i)
+            }
+            console.log(additionalRocks);
+            if (fullcapacity < additionalRocks) {
+                additionalRocks = fullcapacity
+            }
+            console.log(additionalRocks);
+            console.log(additionalRocks);
+            for (var i = 1; i < availablespace.length; i++) {
+                for (var j = 0; j < availablespace.length + 1; j++) {
+                    if (availablespace[i] < availablespace[j]) {
+                        var temp = availablespace[i]
+                        availablespace[i] = availablespace[j]
+                        availablespace[j] = temp
+                        var temp2 = index[i]
+                        index[i] = index[j]
+                        index[j] = temp2
+                    }
+                }
+            }
+            var i = 0;
+            while (additionalRocks > 0) {
+                if (availablespace[i] > 0) {
+                    var indexforRocks = index[i]
+                    for (var j = 0; j < availablespace[i]; j++) {
+                        if (additionalRocks > 0) {
+                            rocks[indexforRocks] = rocks[indexforRocks] + 1
+                            additionalRocks = additionalRocks - 1
+                        }
+                    }
 
-
-        console.log(rocks);
-        console.log(fullbag);
-        console.log("I'm So happy after solving this");
+                }
+                i++
+            }
+            var fullbag = 0;
+            for (var i = 0; i < rocks.length; i++) {
+                var max = capacity[i];
+                var rocksInBag = rocks[i];
+                if (rocksInBag == max) {
+                    fullbag++
+                }
+            }
+            // console.log(fullbag);     
+            return fullbag
+        }
     </script>
 </body>
 
