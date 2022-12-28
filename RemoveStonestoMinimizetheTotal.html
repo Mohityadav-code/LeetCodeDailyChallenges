@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Day 2</title>
+    <style></style>
+</head>
+
+<body>
+    <h1>You are given a 0-indexed integer array piles, where piles[i] represents the number of stones in the ith pile,
+        and an integer k. You should apply the following operation exactly k times:
+
+        Choose any piles[i] and remove floor(piles[i] / 2) stones from it.
+        Notice that you can apply the operation on the same pile more than once.
+
+        Return the minimum possible total number of stones remaining after applying the k operations.
+
+        floor(x) is the greatest integer that is smaller than or equal to x (i.e., rounds x down).</h1>
+    <h2>
+        Example : Input: piles = [5,4,9], k = 2
+        Output: 12
+        Explanation: Steps of a possible scenario are:
+        - Apply the operation on pile 2. The resulting piles are [5,4,5].
+        - Apply the operation on pile 0. The resulting piles are [3,4,5].
+        The total number of stones in [3,4,5] is 12.</h2>
+    <script>
+        console.log("hello world");
+        piles = [5, 4, 9]
+        k = 2
+        //operation=floor(piles[i] / 2)        
+        // Strategy //
+        //There are two main ways
+        //first we sort array then start operation from last
+        //get max from array every time and apply operation on it
+        //after applying operation at kth time we add elements and return it
+        var total=0
+        for(var i=0;i<k;i++){
+
+            max=Math.max(...piles)
+            index=piles.indexOf(max)
+            console.log("index of maximum is : ",index);
+            console.log("now maximum is : ",max);
+            operation=Math.floor(max/2)
+            piles[index]= piles[index]-operation
+            console.log("After applying operation ","piles[",index,"]","is" ,operation);
+        }
+        for(var i=0;i<piles.length;i++){
+            total=total+piles[i]
+        }
+        console.log(piles);
+        console.log(total);
+
+    </script>
+</body>
+
+</html>
