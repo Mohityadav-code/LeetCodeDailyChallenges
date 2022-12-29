@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Day 3</title>
+    <style>
+        body {
+            background: yellowgreen;
+        }
+
+        pre {
+            font-size: 20px;
+            color: rgb(17, 0, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>You are given n​​​​​​ tasks labeled from 0 to n - 1 represented by a 2D integer array tasks, where tasks[i] =
+        </br> [enqueueTimei, processingTimei] means that the i​​​​​​th​​​​ task will be available to process at
+        enqueueTimei and will
+        </br> take processingTimei to finish processing.
+        </br>
+        <h2>
+            You have a single-threaded CPU that can process at most one task at a time and will act in the following
+            way:
+
+            <ul>
+                <li>If the CPU is idle and there are no available tasks to process, the CPU remains idle.</li>
+                <li>
+                    If the CPU is idle and there are available tasks, the CPU will choose the one with the shortest
+
+                </li>
+                <li>
+                    processing time. If mlitiple tasks have the same shortest processing time, it will choose the task
+                    with
+                    the smallest index.
+
+                </li>
+                <li>
+
+                    Once a task is started, the CPU will process the entire task without stopping.
+                </li>
+                <li>
+
+                    The CPU can finish a task then start a new one instantly.
+                </li>
+                <li>
+                    Return the order in which the CPU will process the tasks.
+
+                </li>
+            </ul>
+
+        </h2>
+
+
+    </h1>
+    <pre>
+        Example : Input: tasks = [[1,2],[2,4],[3,2],[4,1]]
+        Output: [0,2,3,1]
+        Explanation: The events go as follows: 
+        - At time = 1, task 0 is available to process. Available tasks = {0}.
+        - Also at time = 1, the idle CPU starts processing task 0. Available tasks = {}.
+        - At time = 2, task 1 is available to process. Available tasks = {1}.
+        - At time = 3, task 2 is available to process. Available tasks = {1, 2}.
+        - Also at time = 3, the CPU finishes task 0 and starts processing task 2 as it is the shortest. Available tasks = {1}.
+        - At time = 4, task 3 is available to process. Available tasks = {1, 3}.
+        - At time = 5, the CPU finishes task 2 and starts processing task 3 as it is the shortest. Available tasks = {1}.
+        - At time = 6, the CPU finishes task 3 and starts processing task 1. Available tasks = {}.
+        - At time = 10, the CPU finishes task 1 and becomes idle.
+    </pre>
+</body>
+<script>
+    tasks = [[1, 2], [2, 4], [3, 2], [4, 1]]
+    var sum = []
+    var index = []
+    for (var i = 0; i < tasks.length; i++) {
+        var total = 0
+        for (var j = 0; j < tasks[i].length; j++) {
+            total = total + tasks[i][j]
+        }
+        sum.push(total)
+        index.push(i)
+    }
+    for (var i = 1; i < sum.length; i++) {
+        for (var j = 0; j < sum.length + 1; j++) {
+            if (sum[i] < sum[j]) {
+                var temp = sum[i]
+                sum[i] = sum[j]
+                sum[j] = temp
+                var temp2 = index[i]
+                index[i] = index[j]
+                index[j] = temp2
+            }
+        }
+    }
+    console.log(index);
+</script>
+
+</html>
