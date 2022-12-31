@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Day 5</title>
+    <style>
+        body {
+            background: yellowgreen;
+        }
+
+        pre {
+            font-size: 20px;
+            color: rgb(17, 0, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>You are given an m x n integer array grid where grid[i][j] could be:
+        </br>
+        1 representing the starting square. There is exactly one starting square.
+        </br>
+        2 representing the ending square. There is exactly one ending square.
+        </br>
+        0 representing empty squares we can walk over.
+        </br>
+        -1 representing obstacles that we cannot walk over.
+        </br>
+        Return the number of 4-directional walks from the starting square to the ending square,
+        </br>
+        that walk over every non-obstacle square exactly once.
+
+    </h1>
+    <pre>
+     <img src="https://assets.leetcode.com/uploads/2021/08/02/lc-unique1.jpg" alt="">
+     Input: grid = [[1,0,0,0],[0,0,0,0],[0,0,2,-1]]
+     Output: 2
+     Explanation: We have the following two paths:
+     1. (0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2)
+     2. (0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2)
+
+    </pre>
+</body>
+<script>
+    var grid = [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]]
+    var start = []
+    var end = []
+    for (var i = 0; i < grid.length; i++) {
+        for (var j = 0; j < grid[i].length; j++) {
+            // now i can iterate throught every elements in grid array
+            if (grid[i][j] == 1) {
+                console.log("Reached at starting of the path");
+                start.push(i, j)
+            }
+            if (grid[i][j] == 0) {
+                console.log("Here is blank space");
+            }
+            if (grid[i][j] == 2) {
+                console.log("Here is end point");
+                end.push(i, j)
+            }
+            // if(grid[i][j]==-1){
+            //     // grid.splice([i][j],1)
+            //     delete grid[i][j]
+            // }
+            // come to this later
+        }
+    }
+    console.log(grid);
+    console.log('start: ', start);
+    console.log('end: ', end);
+
+    for (var i = 0; i <grid.length; i++) {
+        for (var j = 0; j < grid.length+1; j++) {
+            console.log(i,j);
+        }
+    }
+    // still works is left in this one 
+    // update this after todoList and refree count project
+</script>
+
+</html>
