@@ -32,9 +32,9 @@
         - Apply the operation on pile 0. The resulting piles are [3,4,5].
         The total number of stones in [3,4,5] is 12.</pre >
     <script>
-        console.log("hello world");
         piles = [5, 4, 9]
         k = 2
+      
         //operation=floor(piles[i] / 2)        
         // Strategy //
         //There are two main ways
@@ -46,16 +46,12 @@
 
             max=Math.max(...piles)
             index=piles.indexOf(max)
-            console.log("index of maximum is : ",index);
-            console.log("now maximum is : ",max);
             operation=Math.floor(max/2)
             piles[index]= piles[index]-operation
-            console.log("After applying operation ","piles[",index,"]","is" ,operation);
         }
         for(var i=0;i<piles.length;i++){
             total=total+piles[i]
         }
-        console.log(piles);
         console.log(total);
 
     </script>
