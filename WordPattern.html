@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Day 6</title>
+    <style>
+        body {
+            background: yellowgreen;
+        }
+
+        pre {
+            font-size: 20px;
+            color: rgb(17, 0, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Given a pattern and a string s, find if s follows the same pattern.
+        </br>
+        Here follow means a full match, such that there is a bijection between
+        </br>
+        a letter in pattern and a non-empty word in s.
+
+    </h1>
+    <pre>
+        Example 1 :
+        Input: pattern = "abba", s = "dog cat cat dog"
+        Output: true
+
+        Example 2 :
+        Input: pattern = "abba", s = "dog cat cat fish"
+        Output: false
+    </pre>
+</body>
+<script>
+    var s = "dog cat cat dog"
+    var pattern = "abba"
+    console.log("jai mata di");
+    var firstword=[]
+    for(var i=0;i<s.length;i++){
+        while(s[i]!=" "){
+            firstword.push(s[i])
+        }
+    }
+    console.log(firstword);
+
+</script>
+</html>
