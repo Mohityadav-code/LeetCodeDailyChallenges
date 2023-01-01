@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,43 +37,61 @@
     </pre>
 </body>
 <script>
-    var compare=[]
-    var s = "dog cat cat dog"
-    var pattern = "abba"
-    pattern=Array.from(pattern)
-    var a = "";
-    var b = "";
-    var i = 0
-    // Storing First word
-    while (s[i] != " ") {
-        a += s[i]
-        i++
-    }
-    // Storing second Word
-    if (s[i + 1] != a[0]) {
-        while (s[i + 1] != " ") {
-            b += s[i + 1]
+    function check(){
+
+        var compare = []
+        var s = "dog cat cat dog"
+        var pattern = "abba"
+        pattern = Array.from(pattern)
+        var a = "";
+        var b = "";    
+        var i = 0
+        // Storing First word
+        while (s[i] != " ") {
+            a += s[i]
             i++
         }
-    }
-    // replacing words in string so we can compare easily
-    for(var i=0;i<s.length;i++){
-        s = s.replace(a, "a")
-        s = s.replace(b, "b")
-        if(s[i]!=" "){
-           compare.push(s[i])
+        // Storing second Word
+        if (s[i + 1] != a[0]) {
+            while (s[i + 1] != " ") {
+                b += s[i + 1]
+                i++
+            }
         }
-    }
-    // now comparing 
-    var flag=0
-    for (var i = 0; i < pattern.length; i++) {
-        if (pattern[i] != compare[i]) {
-            flag=1
+        console.log(i);
+            if (s[i + 2] != b[0]) {
+                if(s[i + 2] != a[0]){
+
+                    return false
+                }
+            }
+        // replacing words in string so we can compare easily
+        for (var i = 0; i < s.length; i++) {
+             if (a.length > 0) {
+                s = s.replace(a, "a")
+            }
+            if (b.length > 0) {
+                s = s.replace(b, "b")
+            }
+            if (s[i] != " ") {
+                compare.push(s[i])
+            }
         }
+        console.log('compare: ', compare);
+        console.log('pattern: ', pattern);
+        // now comparing 
+        var flag = 0
+        for (var i = 0; i < pattern.length; i++) {
+            if (pattern[i] != compare[i]) {
+                flag = 1
+            }
+        }
+        // returning value  
+        if (flag == 0) return true
+        else return false
     }
-    // returning value  
-    if(flag==0) console.log("Yes String follows the pattern");
-    else console.log("No, String does not follows the pattern");
+
+    console.log('check(): ', check());
 </script>
 
 </html>
