@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,23 +31,50 @@
         Example 1 :
         Input: pattern = "abba", s = "dog cat cat dog"
         Output: true
-
+        
         Example 2 :
         Input: pattern = "abba", s = "dog cat cat fish"
         Output: false
     </pre>
 </body>
 <script>
+    var compare=[]
     var s = "dog cat cat dog"
     var pattern = "abba"
-    console.log("jai mata di");
-    var firstword=[]
-    for(var i=0;i<s.length;i++){
-        while(s[i]!=" "){
-            firstword.push(s[i])
+    pattern=Array.from(pattern)
+    var a = "";
+    var b = "";
+    var i = 0
+    // Storing First word
+    while (s[i] != " ") {
+        a += s[i]
+        i++
+    }
+    // Storing second Word
+    if (s[i + 1] != a[0]) {
+        while (s[i + 1] != " ") {
+            b += s[i + 1]
+            i++
         }
     }
-    console.log(firstword);
-
+    // replacing words in string so we can compare easily
+    for(var i=0;i<s.length;i++){
+        s = s.replace(a, "a")
+        s = s.replace(b, "b")
+        if(s[i]!=" "){
+           compare.push(s[i])
+        }
+    }
+    // now comparing 
+    var flag=0
+    for (var i = 0; i < pattern.length; i++) {
+        if (pattern[i] != compare[i]) {
+            flag=1
+        }
+    }
+    // returning value  
+    if(flag==0) console.log("Yes String follows the pattern");
+    else console.log("No, String does not follows the pattern");
 </script>
+
 </html>
