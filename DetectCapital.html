@@ -42,5 +42,28 @@
         Output: false
     </pre>
 </body>
+<script>
+    // there will be mainly three conditions 
+    // if there is only one letter then it must be in capital
+    // if there are two letter then it can be capital and small
+    // it should say false if it is more than tree letters and one of them is small and other are false
+    // var word = ASc  here word.length > 2 but captial letters < words.length or 
+    var  word = "USA"
+    var capitalletters=0
+    var lowercaseletters=0
+    var i=0
+    while(i<word.length){
+        if( word[i]==word[i].toUpperCase()){
+            capitalletters++
+        }
+        if( word[i]==word[i].toLowerCase()){
+            lowercaseletters++
+        }
+        i++
+    }
+    console.log(capitalletters);
+    console.log(lowercaseletters);
+
+</script>
 
 </html>
