@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LeetCode Day 7</title>
     <style>
-          body {
+        body {
             background: yellowgreen;
         }
 
@@ -48,22 +48,34 @@
     // if there are two letter then it can be capital and small
     // it should say false if it is more than tree letters and one of them is small and other are false
     // var word = ASc  here word.length > 2 but captial letters < words.length or 
-    var  word = "USA"
-    var capitalletters=0
-    var lowercaseletters=0
-    var i=0
-    while(i<word.length){
-        if( word[i]==word[i].toUpperCase()){
-            capitalletters++
+    function  detectCapitalLetter(word){
+        var firstletter = word[0]
+        var length = word.length
+        var capitalletters = 0
+        var lowercaseletters = 0
+        var i = 0
+        while (i < length) {
+            if (word[i] == word[i].toUpperCase()) {
+                capitalletters++
+            }
+            if (word[i] == word[i].toLowerCase()) {
+                lowercaseletters++
+            }
+            i++
         }
-        if( word[i]==word[i].toLowerCase()){
-            lowercaseletters++
+        if (firstletter==firstletter.toUpperCase()) {
+            if (length == lowercaseletters + 1||length == capitalletters) {
+                return  true
+            }
         }
-        i++
+        if (capitalletters>0) {
+            if (length>capitalletters) {
+                return false
+            }
+        }
+        else return  true
     }
-    console.log(capitalletters);
-    console.log(lowercaseletters);
-
+    console.log('detectCapitalLetter(): ', detectCapitalLetter("Bx"));
 </script>
 
 </html>
