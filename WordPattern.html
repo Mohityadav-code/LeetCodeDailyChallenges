@@ -37,49 +37,68 @@
     </pre>
 </body>
 <script>
-    function check(){
-
-        var compare = []
-        var s = "dog cat cat dog"
-        var pattern = "abba"
-        pattern = Array.from(pattern)
-        var a = "";
-        var b = "";    
-        var i = 0
-        // Storing First word
+    function pushwords(){
+        
         while (s[i] != " ") {
             a += s[i]
             i++
         }
-        // Storing second Word
         if (s[i + 1] != a[0]) {
             while (s[i + 1] != " ") {
+                for (var i = 0; i < s.length; i++) {
+                     if (a.length > 0) {
+                        s = s.replace(a, "a")
+                    }
+                    if (b.length > 0) {
+                        s = s.replace(b, "b")
+                    }
+                    if (s[i] != " ") {
+                        compare.push(s[i])
+                    }
+                }
                 b += s[i + 1]
                 i++
             }
         }
-        console.log(i);
-            if (s[i + 2] != b[0]) {
-                if(s[i + 2] != a[0]){
 
-                    return false
-                }
-            }
-        // replacing words in string so we can compare easily
-        for (var i = 0; i < s.length; i++) {
-             if (a.length > 0) {
-                s = s.replace(a, "a")
-            }
-            if (b.length > 0) {
-                s = s.replace(b, "b")
-            }
-            if (s[i] != " ") {
-                compare.push(s[i])
+    }
+    function conditions(){
+        if (s[i + 2] != b[0]) {
+            if(s[i + 2] != a[0]){
+                
+                return false
             }
         }
+    }
+    function check(){
+
+        var compare = []
+        var s = "aa"
+        var pattern = "a"
+        pattern = Array.from(pattern)
+        var a = "";
+        var b = "";    
+        var i = 0
+        if(s.length==pattern.length){
+            while(i<pattern.length){
+                if(pattern[i]==s[i]){
+                    return true
+                }
+                i++
+            }
+        }
+        var i = 0
+        // Storing First word
+        // Storing second Word
+        console.log(i);
+        // replacing words in string so we can compare easily
         console.log('compare: ', compare);
         console.log('pattern: ', pattern);
         // now comparing 
+    }
+    
+    console.log('check(): ', check());
+    function compare(){
         var flag = 0
         for (var i = 0; i < pattern.length; i++) {
             if (pattern[i] != compare[i]) {
@@ -90,8 +109,6 @@
         if (flag == 0) return true
         else return false
     }
-
-    console.log('check(): ', check());
 </script>
 
 </html>
