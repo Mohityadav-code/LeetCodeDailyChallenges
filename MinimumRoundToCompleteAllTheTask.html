@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Day 9</title>
+    <Style>
+          body {
+            background: yellowgreen;
+        }
+
+        pre {
+            font-size: 20px;
+            color: rgb(17, 0, 255);
+        }
+    </Style>
+</head>
+
+<body>
+    <h1>
+        You are given a 0-indexed integer array tasks, where tasks[i] represents the difficulty level of a task. In each
+        </br>
+        round, you can complete either 2 or 3 tasks of the same difficulty level.
+        </br>
+
+        Return the minimum rounds required to complete all the tasks, or -1 if it is not possible to complete all the
+        </br>
+        taskks.
+    </h1>
+    <pre>
+        Input: tasks = [2,2,3,3,2,4,4,4,4,4]
+        Output: 4
+        Explanation: To complete all the tasks, a possible plan is:
+        - In the first round, you complete 3 tasks of difficulty level 2.
+        - In the second round, you complete 2 tasks of difficulty level 3.
+        - In the third round, you complete 3 tasks of difficulty level 4.
+        - In the fourth round, you complete 2 tasks of difficulty level 4.
+        It can be shown that all the tasks cannot be completed in fewer than 4 rounds, so the answer is 4.
+    </pre>
+</body>
+<script>
+    var tasks = [2,2,3,3,2,4,4,4,4,4]
+    var count=1
+    var Output=0
+    // if any elements occur for more than 2 times or three times
+    // if count >=2 && count<=3 {tasks++ }
+    for(var i=0;i<tasks.length-1;i++){
+        for(var j=1;j<tasks.length;j++){
+            if(tasks[i]==tasks[j]){
+                count++
+                if(count>2){
+                    if(count%2==0&&count%3==0){
+                        Output++
+                    }
+
+                }
+                if(count==1){
+                    
+                }
+            }
+        }
+    }
+    // not completed
+console.log(Output);
+</script>
+
+</html>
